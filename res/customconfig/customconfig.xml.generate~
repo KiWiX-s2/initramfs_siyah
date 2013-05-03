@@ -142,10 +142,6 @@ name="Dirty ratio" action="generic /proc/sys/vm/dirty_ratio" unit="%" min="5" re
 name="Dirty Background ratio" action="generic /proc/sys/vm/dirty_background_ratio" unit="%" min="5" reversed="false" step="5" max="80"/>
 <seekBar description="Vibration intensity level (default 75%)" 
 name="Vibration Level" action="generic /sys/vibrator/pwm_val" unit="%" min="25" reversed="false" step="25" max="100"/>
- <spinner description="Changes wifi power configuration. PM_MAX is default." action="wifi_power">
-             <spinnerItem name="PM_MAX" value="0"/>
-             <spinnerItem name="PM_FAST" value="1"/>
-       </spinner>
 </settingsPane>
 </settingsTab>
 

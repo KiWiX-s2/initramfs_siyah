@@ -1,12 +1,12 @@
 #!/sbin/busybox sh
 
 if [ "a$2" != "a" ];then
-  wifi_power=$2
+  wifi_pm=$2
 fi
 
 mount -o remount,rw /
 
-case "${wifi_power}" in
+case "${wifi_pm}" in
   0)
     echo "0" > /sys/module/dhd/parameters/wifi_pm
     ;;
@@ -17,4 +17,4 @@ esac;
 
 mount -o remount,ro /
 
-echo $wifi_power
+echo $wifi_pm

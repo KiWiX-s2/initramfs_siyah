@@ -112,6 +112,12 @@
 </settingsTab>
 
 <settingsTab name="TWEAKS">
+<settingsPane description="These settings control wifi power." name="Wifi power">
+<spinner description="PM_MAX is default for powersaving when screen is off, PM_FAST is for performance." name="Wifi power" action="wifi_pm">
+             <spinnerItem name="PM_MAX (default)" value="0"/>
+             <spinnerItem name="PM_FAST (performance)" value="1"/>
+       </spinner>
+</settingsPane>
 <settingsPane description="These settings control CFS (Complete Fair Scheduler) Task Scheduler Settings" name="CFS Settings">
       <checkbox description="Disabling GENTLE_FAIR_SLEEPERS may give you better UI responsiveness." name="GENTLE_FAIR_SLEEPERS" action="schedfeat GENTLE_FAIR_SLEEPERS" label="GENTLE_FAIR_SLEEPERS"/>
 <checkbox description="Using ARCH_POWER enables the use of arm topology power functions instead of generic ones." name="ARCH_POWER" action="schedfeat ARCH_POWER" label="ARCH_POWER"/>
