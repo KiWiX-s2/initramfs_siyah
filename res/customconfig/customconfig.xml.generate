@@ -142,10 +142,23 @@ name="Dirty ratio" action="generic /proc/sys/vm/dirty_ratio" unit="%" min="5" re
 name="Dirty Background ratio" action="generic /proc/sys/vm/dirty_background_ratio" unit="%" min="5" reversed="false" step="5" max="80"/>
 <seekBar description="Vibration intensity level (default 75%)" 
 name="Vibration Level" action="generic /sys/vibrator/pwm_val" unit="%" min="25" reversed="false" step="25" max="100"/>
-    </settingsPane>
+</settingsPane>
 </settingsTab>
 
 <settingsTab name="GPU">
+<settingsPane description="Mali touchboost settings" name="Mali_touchboost">
+<spinner description="Select the level to be used to boost GPU frequency when you touch the screen." name="Mali Touch Boost Level" action="generic /sys/module/mali/parameters/mali_touch_boost_level">
+<spinnerItem name="Disabled" value="0"/> 
+<spinnerItem name="Step2" value="1"/> 
+<spinnerItem name="Step3" value="2"/> 
+<spinnerItem name="Step4" value="3"/>
+</spinner>
+</settingsPane>
+<settingsPane description="Mali utilization timeout" name="Mali utilization timeout">
+<seekBar description="Here you can change GPU utilization timeout calculation. Closer to 100 (0.1sec) and you'll get faster GPU response in steps jump on load, but more battery is drained. CM10 default: 1000 (1sec)"
+name="GPU Utilization Timeout" action="generic /sys/module/mali/parameters/mali_gpu_utilization_timeout"
+unit="MSec" min="100" reversed="false" step="50" max="1000"/>
+</settingsPane>
     <settingsPane description="GPU Frequency Settings. Defaults frequencies are 100, 160, 200 and 267. Voltage defaults are 900mV, 950mV, 950mV and 1000mV." name="GPUFreq">
       <spinner description="Changes the first GPU frequency step" name="GPU Freq Step1" action="gpu-freq 1">
              <spinnerItem name="267MHz" value="267"/> 
