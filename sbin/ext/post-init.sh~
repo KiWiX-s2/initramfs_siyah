@@ -33,10 +33,6 @@ if [ "$logger" == "on" ];then
 insmod /lib/modules/logger.ko
 fi
 
-if [ "$frandom" == "on" ];then
-insmod /lib/modules/frandom.ko
-fi
-
 # disable debugging on some modules
 if [ "$logger" == "off" ];then
   rm -rf /dev/log

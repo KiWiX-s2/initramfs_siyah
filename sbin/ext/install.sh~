@@ -62,7 +62,7 @@ if [ ! -f /system/.siyah/stweaks-installed ]; then
 installstweaks=1
 fi
 
-if [ "$installstweaks" == "0" ];then
+if [ "$installstweaks" == "1" ];then
   rm /system/app/STweaks.apk
   rm -f /data/app/com.gokhanmoral.STweaks*
   rm -f /data/dalvik-cache/*STweaks.*

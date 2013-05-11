@@ -272,6 +272,8 @@ on boot
     chmod 0664 /sys/module/lowmemorykiller/parameters/adj
     chown root system /sys/module/lowmemorykiller/parameters/minfree
     chmod 0664 /sys/module/lowmemorykiller/parameters/minfree
+    chown root system /sys/module/dhd/parameters/wifi_pm
+    chmod 0664 /sys/module/dhd/parameters/wifi_pm
 
     # Tweak background writeout
     write /proc/sys/vm/dirty_expire_centisecs 200
