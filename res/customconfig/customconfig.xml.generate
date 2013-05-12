@@ -181,6 +181,7 @@ unit="MSec" min="100" reversed="false" step="50" max="1000"/>
              <spinnerItem name="100MHz" value="100"/>
       </spinner>
       <spinner description="Changes the fourth GPU frequency step" name="GPU Freq Step4" action="gpu-freq 4">
+             <spinnerItem name="400MHz" value="400"/> 
              <spinnerItem name="267MHz" value="267"/> 
              <spinnerItem name="200MHz" value="200"/> 
              <spinnerItem name="160MHz" value="160"/> 
