@@ -5,12 +5,10 @@ busybox mount -t proc proc /proc
 busybox mount -t sysfs sysfs /sys
 echo 102 > /sys/devices/virtual/sec/sec_key/set_homekey
 
-  if grep -q bootmode=2 /proc/cmdline ; then
   cp -a /res/misc/init.40/* /
   echo 0 > /proc/sys/kernel/rom_feature_set
   cp -a /recovery.rc /init.rc
   exec /sbin/init2
-fi
 
 if busybox grep -q 1 /sys/class/power_supply/battery/batt_lp_charging ; then
   # low power mode
