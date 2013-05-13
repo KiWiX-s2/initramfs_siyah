@@ -33,6 +33,10 @@ if [ "$logger" == "on" ];then
 insmod /lib/modules/logger.ko
 fi
 
+if [ "$frandom" == "on" ];then
+insmod /lib/modules/frandom.ko
+fi
+
 # disable debugging on some modules
 if [ "$logger" == "off" ];then
   rm -rf /dev/log
@@ -81,6 +85,13 @@ export CONFIG_BOOTING=
 
 #usb mode
 /res/customconfig/actions/usb-mode ${usb_mode}
+
+if [ "$boostpulse" == "on" ];then
+chown root.system /sys/devices/system/cpu/cpufreq/pegasusq/boostpulse
+chmod 664 /sys/devices/system/cpu/cpufreq/pegasusq/boostpulse
+echo "1" > /sys/devices/system/cpu/cpufreq/pegasusq/boostpulse
+fi
+
 
 ##### init scripts #####
 /sbin/busybox sh /sbin/ext/run-init-scripts.sh

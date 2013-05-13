@@ -1,5 +1,14 @@
 <settingsRoot>
   <settingsTab name="CPU">
+<settingsPane description="For applications that require a one-shot increase in frequency,
+the boostpulse interface would help to scale to max for the time
+specified in boostime. This helps applications that currently
+increases scaling_min_freq and resets later after a fixed duration.
+Instead of changing scaling_min_freq applications can directly write
+to boostpulse and governer resets during regular timer after the time
+expires." name="Boostpulse for pegasusq">
+<checkbox description="Enable or Disable Boostpulse for pegasusq governor (you should leave this on for smoothness, needs restart)." name="Boostpulse" action="generic /tmp/Boostpulse" label="Boostpulse"/>
+</settingsPane>
     <settingsPane description="CPU TWEAKS" 
 		name="CPU Idle and Power Settings">
       <spinner description="Sets the CPU Idle Mode. AFTR+LPA is the default and best for the battery life but if you have problems try Idle+LPA." name="CPU Idle Mode" action="generic /sys/module/cpuidle_exynos4/parameters/enable_mask">

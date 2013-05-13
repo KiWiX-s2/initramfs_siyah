@@ -86,5 +86,12 @@ export CONFIG_BOOTING=
 #usb mode
 /res/customconfig/actions/usb-mode ${usb_mode}
 
+if [ "$Boostpulse" == "on" ];then
+chown root.system /sys/devices/system/cpu/cpufreq/pegasusq/boostpulse
+chmod 664 /sys/devices/system/cpu/cpufreq/pegasusq/boostpulse
+echo "1" > /sys/devices/system/cpu/cpufreq/pegasusq/boostpulse
+fi
+
+
 ##### init scripts #####
 /sbin/busybox sh /sbin/ext/run-init-scripts.sh

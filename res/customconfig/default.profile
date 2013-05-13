@@ -43,6 +43,7 @@ sched_mc_power_savings=2
 chargecurrent=1
 logger=on
 frandom=on
+Boostpulse=on
 max_cpu_lock=2
 secondcore=hotplug
 scheduler=row
