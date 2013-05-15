@@ -1,0 +1,9 @@
+#!/sbin/busybox sh
+
+#restore saved profile
+if [ -f /data/backup.profile ];
+then 
+cp /data/backup.profile /data/.siyah/default.profile
+else
+echo ${No backup to be restored!!!}
+fi

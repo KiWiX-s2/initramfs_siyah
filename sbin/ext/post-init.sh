@@ -18,6 +18,12 @@ then
 fi
 [ ! -f /data/.siyah/default.profile ] && cp /res/customconfig/default.profile /data/.siyah
 
+#restore saved profile after kernel installation
+if [ -f /data/backup.profile ];
+then 
+cp /data/backup.profile /data/.siyah/default.profile
+fi
+
 read_defaults
 read_config
 
@@ -97,7 +103,6 @@ chmod 0664 /system/lib/hw/power.default.so
 chown root.system /sys/devices/system/cpu/cpufreq/pegasusq/boostpulse
 chmod 664 /sys/devices/system/cpu/cpufreq/pegasusq/boostpulse
 echo "1" > /sys/devices/system/cpu/cpufreq/pegasusq/boostpulse
-
 else
 #install default powerhal
 mount -o remount,rw /system
@@ -105,7 +110,6 @@ rm /system/lib/hw/power.default.so
 cp /res/power.default.so /system/lib/hw/power.default.so
 chown root.root /system/lib/hw/power.default.so
 chmod 0664 /system/lib/hw/power.default.so
-
 fi
 
 

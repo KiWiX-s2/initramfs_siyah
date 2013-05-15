@@ -318,8 +318,13 @@ unit="MSec" min="100" reversed="false" step="50" max="1000"/>
       <button description="Removes su and Superuser.apk files from the system partition" name="Remove Root" action="remove-root" label="Remove Root"/>
       <checkbox description="If checked, installs root on the next reboot." name="Auto-Install Root" action="generic /tmp/install_root" label="Auto-Install Root"/>
     </settingsPane>
-  </settingsTab>
-  <settingsTab name="Dualboot">
+</settingsTab>
+<settingsTab name= "Backup/Restore">
+<button description="Backup stweaks settings to be restored later by user or to keep user settings when a new kernel version is installed." name="Backup settings" action="backup" label="Backup"/>
+<button description="Restore saved stweaks settings." name="Restore settings" action="restore" label="Restore"/>
+<button description="Restore default stweaks settings." name="Restore default settings" action="default" label="Restore default"/>
+</settingsTab>
+<settingsTab name="Dualboot">
     <settingsPane description="Dual-Boot Settings. Warning: No confirmation will be asked for reboot buttons." name="Dual-Boot Settings">
       <button description="Reboot into custom recovery which let you configure, clone or backup the 2ndROM" name="Reboot into Recovery" action="reboot-into 0" label="Reboot into 2ndROM Utils"/>
       <button description="Reboot into 1stROM" name="Reboot into 1stROM" action="reboot-into 1" label="Reboot into 1stROM"/>
