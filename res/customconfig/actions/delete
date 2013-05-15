@@ -1,10 +1,9 @@
 #!/sbin/busybox sh
 
-#delete saved profile and restore defaults
-if [ -f /data/backup.profile ];
-then 
+#delete saved profile
+if ls /data/backup.profile &> /dev/null; then
 rm /data/backup.profile
-cp /res/customconfig/default.profile /data/.siyah/default.profile
+echo "Backup deleted"
 else
-echo ${No backup to be deleted!!!}
+echo "No backup to be deleted!!!"
 fi

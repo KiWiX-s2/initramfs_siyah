@@ -73,7 +73,6 @@ scaling_min_freq=200000
 usb_mode=default
 GENTLE_FAIR_SLEEPERS=on
 ARCH_POWER=on
-cfs_tweaks=1
 skia=default
 vmtweaks=nunogil
 pwm_val=75

@@ -1,9 +1,9 @@
 #!/sbin/busybox sh
 
 #restore saved profile
-if [ -f /data/backup.profile ];
-then 
+if ls /data/backup.profile &> /dev/null; then
 cp /data/backup.profile /data/.siyah/default.profile
+echo "Restore completed"
 else
-echo ${No backup to be restored!!!}
+echo "No backup to be restored!!!"
 fi

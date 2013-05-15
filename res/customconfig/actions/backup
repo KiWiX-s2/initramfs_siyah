@@ -1,7 +1,5 @@
 #!/sbin/busybox sh
 
 #copy current profile to a safe location
-if [ -f /data/.siyah/default.profile ];
-      then 
 cp /data/.siyah/default.profile /data/backup.profile
-fi
+echo "Backup completed"

@@ -18,10 +18,17 @@ then
 fi
 [ ! -f /data/.siyah/default.profile ] && cp /res/customconfig/default.profile /data/.siyah
 
-#restore saved profile after kernel installation
-if [ -f /data/backup.profile ];
-then 
+#check if there is a backup available, check if default profile and active profile are the same
+if ls /data/backup.profile &> /dev/null; then
+USERPROFILE= cat /data/.siyah/default.profile
+DEFAULTPROFILE= cat /res/customconfig/default.profile
+#if yes then apply the backup to restore user settings
+if [ "$USERPROFILE" = "$DEFAULTPROFILE" ]; then 
 cp /data/backup.profile /data/.siyah/default.profile
+else
+read_defaults
+read_config
+fi
 fi
 
 read_defaults
