@@ -1,12 +1,7 @@
 <settingsRoot>
   <settingsTab name="CPU">
 <settingsPane description="For applications that require a one-shot increase in frequency,
-the boostpulse interface would help to scale to max for the time
-specified in boostime. This helps applications that currently
-increases scaling_min_freq and resets later after a fixed duration.
-Instead of changing scaling_min_freq applications can directly write
-to boostpulse and governer resets during regular timer after the time
-expires." name="Boostpulse for pegasusq">
+the boostpulse interface will increase the cpu's frequency to 800mhz for 500ms while scrolling." name="Boostpulse for pegasusq">
 <checkbox description="Enable or Disable Boostpulse for pegasusq governor (you should leave this on for smoothness, needs restart)." name="Boostpulse" action="generic /tmp/Boostpulse" label="Boostpulse"/>
 </settingsPane>
     <settingsPane description="CPU TWEAKS" 
@@ -131,10 +126,9 @@ expires." name="Boostpulse for pegasusq">
              <spinnerItem name="Linux kernel defaults" value="1"/>
              <spinnerItem name="Thunderbolt script defaults" value="2"/>
        </spinner>
-<spinner description="Select Skia (needs restart)" name="Skia (2D graphic library for drawing Text, Geometries, and Images)" action="skia">
-	<spinnerItem name="Default Skia" value="default"/>
-	<spinnerItem name="Fimg2d3x Skia" value="fimg2d3x"/>
-      </spinner>
+</settingsPane>
+<settingsPane>
+<settingsPane description="These settings control misc kernel and ROM tweaks." name="MISC tweaks">
 <checkbox description="Enable or Disable Scrolling Cache (you should leave this on for smoothness, needs restart)" name="Scrolling Cache" action="scrollcache" label="Scrolling Cache"/>
       <checkbox description="Enable or Disable Navigation Bar (needs restart)" name="Navigation Bar" action="navigationbar" label="Navigation Bar"/>
 <spinner description="Enable or Disable Media Scanner" name="Media Scanner" action="mediascanner">
@@ -153,6 +147,7 @@ name="Dirty ratio" action="generic /proc/sys/vm/dirty_ratio" unit="%" min="5" re
 name="Dirty Background ratio" action="generic /proc/sys/vm/dirty_background_ratio" unit="%" min="5" reversed="false" step="5" max="80"/>
 <seekBar description="Vibration intensity level (default 75%)" 
 name="Vibration Level" action="generic /sys/vibrator/pwm_val" unit="%" min="25" reversed="false" step="25" max="100"/>
+</settingsPane>
 </settingsPane>
 </settingsTab>
 
@@ -323,8 +318,8 @@ unit="MSec" min="100" reversed="false" step="50" max="1000"/>
       <button description="Removes su and Superuser.apk files from the system partition" name="Remove Root" action="remove-root" label="Remove Root"/>
       <checkbox description="If checked, installs root on the next reboot." name="Auto-Install Root" action="generic /tmp/install_root" label="Auto-Install Root"/>
     </settingsPane>
-  </settingsTab>
-  <settingsTab name="Dualboot">
+</settingsTab>
+ <settingsTab name="Dualboot">
     <settingsPane description="Dual-Boot Settings. Warning: No confirmation will be asked for reboot buttons." name="Dual-Boot Settings">
       <button description="Reboot into custom recovery which let you configure, clone or backup the 2ndROM" name="Reboot into Recovery" action="reboot-into 0" label="Reboot into 2ndROM Utils"/>
       <button description="Reboot into 1stROM" name="Reboot into 1stROM" action="reboot-into 1" label="Reboot into 1stROM"/>

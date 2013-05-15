@@ -87,9 +87,25 @@ export CONFIG_BOOTING=
 /res/customconfig/actions/usb-mode ${usb_mode}
 
 if [ "$Boostpulse" == "on" ];then
+#install modded powerhal
+su
+mount -o remount,rw /system
+rm /system/lib/hw/power.default.so
+cp /res/power.default.so.boostpulse /system/lib/hw/power.default.so
+chown root.root /system/lib/hw/power.default.so
+chmod 0664 /system/lib/hw/power.default.so
 chown root.system /sys/devices/system/cpu/cpufreq/pegasusq/boostpulse
 chmod 664 /sys/devices/system/cpu/cpufreq/pegasusq/boostpulse
 echo "1" > /sys/devices/system/cpu/cpufreq/pegasusq/boostpulse
+
+else
+#install default powerhal
+mount -o remount,rw /system
+rm /system/lib/hw/power.default.so
+cp /res/power.default.so /system/lib/hw/power.default.so
+chown root.root /system/lib/hw/power.default.so
+chmod 0664 /system/lib/hw/power.default.so
+
 fi
 
 
