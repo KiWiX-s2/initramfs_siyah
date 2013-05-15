@@ -119,6 +119,14 @@ chown root.root /system/lib/hw/power.default.so
 chmod 0664 /system/lib/hw/power.default.so
 fi
 
+if [ "$wifi_pm" == "on" ];then
+mount -o remount,rw /
+echo "1" > /sys/module/dhd/parameters/wifi_pm
+else
+mount -o remount,rw /
+echo "0" > /sys/module/dhd/parameters/wifi_pm
+fi
+
 
 ##### init scripts #####
 /sbin/busybox sh /sbin/ext/run-init-scripts.sh

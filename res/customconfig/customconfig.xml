@@ -113,10 +113,7 @@ the boostpulse interface will increase the cpu's frequency to 800mhz for 500ms w
 <checkbox description="Enable or Disable frandom entropy generator (you should leave this on for smoothness, needs restart)." name="Frandom" action="generic /tmp/frandom" label="frandom"/>
 </settingsPane>
 <settingsPane description="These settings control wifi power." name="Wifi power">
-<spinner description="PM_MAX is default for powersaving when screen is off, PM_FAST is for performance. These settings will be reset to default on boot (wifi_pm=0) to avoid battery drain, disable/enable again after a reboot if you want fast downloads with screen off. " name="wifi_pm" action="wifi_pm">
-             <spinnerItem name="Off (default)" value="0"/>
-             <spinnerItem name="On (performance)" value="1"/>
-       </spinner>
+<checkbox description="Enable or Disable wifi power management. On = performance (faster downloads with screen off) Off = battery (default), needs restart." name="wifi_pm" action="generic /tmp/wifi_pm" label="wifi_pm"/>
 </settingsPane>
 <settingsPane description="These settings control CFS (Complete Fair Scheduler) Task Scheduler Settings" name="CFS Settings">
       <checkbox description="Disabling GENTLE_FAIR_SLEEPERS may give you better UI responsiveness." name="GENTLE_FAIR_SLEEPERS" action="schedfeat GENTLE_FAIR_SLEEPERS" label="GENTLE_FAIR_SLEEPERS"/>
