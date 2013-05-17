@@ -122,7 +122,8 @@ fi
 
 wifi_pm= /cat /data/wifi_pm
 mount -o remount,rw /
-if [ "$wifi_pm" = "on" ]; then 
+wifi_pm= cat /data/wifi_pm
+if [ "$wifi_pm" = "1" ]; then 
 echo "1" > /sys/module/dhd/parameters/wifi_pm
 else
 echo "0" > /sys/module/dhd/parameters/wifi_pm

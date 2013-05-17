@@ -10,9 +10,6 @@ chown root.system /data/wifi_pm
 chmod 0664 /data/wifi_pm
 
     case "${wifi_pm}" in
-	default)
-	    echo "default"
-	    ;;
 	on)
             echo "on" > /data/wifi_pm
 	    echo "1" > /sys/module/dhd/parameters/wifi_pm
