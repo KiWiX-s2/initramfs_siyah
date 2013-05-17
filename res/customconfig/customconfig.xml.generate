@@ -113,7 +113,7 @@ the boostpulse interface will increase the cpu's frequency to 800mhz for 500ms w
 <checkbox description="Enable or Disable frandom entropy generator (you should leave this on for smoothness, needs restart)." name="Frandom" action="generic /tmp/frandom" label="frandom"/>
 </settingsPane>
 <settingsPane description="These settings control wifi power." name="Wifi power">
-<checkbox description="Enable or Disable wifi power management. On = performance (faster downloads with screen off) Off = battery (default), needs restart." name="wifi_pm" action="generic /tmp/wifi_pm" label="wifi_pm"/>
+<checkbox description="Enable or Disable wifi power management. On = performance (faster downloads with screen off) Off = battery (default), needs restart." name="wifi_pm" action="wifi_pm" label="wifi_pm"/>
 </settingsPane>
 <settingsPane description="These settings control CFS (Complete Fair Scheduler) Task Scheduler Settings" name="CFS Settings">
       <checkbox description="Disabling GENTLE_FAIR_SLEEPERS may give you better UI responsiveness." name="GENTLE_FAIR_SLEEPERS" action="schedfeat GENTLE_FAIR_SLEEPERS" label="GENTLE_FAIR_SLEEPERS"/>
@@ -144,6 +144,13 @@ name="Dirty ratio" action="generic /proc/sys/vm/dirty_ratio" unit="%" min="5" re
 name="Dirty Background ratio" action="generic /proc/sys/vm/dirty_background_ratio" unit="%" min="5" reversed="false" step="5" max="80"/>
 <seekBar description="Vibration intensity level (default 75%)" 
 name="Vibration Level" action="generic /sys/vibrator/pwm_val" unit="%" min="25" reversed="false" step="25" max="100"/>
+<spinner description="Set values for memory management" name="Memory" action="memory">
+<spinnerItem name="Gamers (free memory)" value="gamers"/>
+<spinnerItem name="Balanced" value="balanced"/>
+<spinnerItem name="Nexus" value="nexus"/>
+<spinnerItem name="Multitasking" value="multitasking"/>
+<spinnerItem name="Hard Multitasking" value="hardtask"/>
+</spinner>
 </settingsPane>
 </settingsPane>
 </settingsTab>

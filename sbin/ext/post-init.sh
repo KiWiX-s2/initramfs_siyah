@@ -25,6 +25,7 @@ DEFAULTPROFILE= cat /res/customconfig/default.profile
 #if yes then apply the backup to restore user settings
 if [ "$USERPROFILE" = "$DEFAULTPROFILE" ]; then 
 cp /data/backup.profile /data/.siyah/default.profile
+echo memory=balanced >> /data/.siyah/default.profile
 else
 read_defaults
 read_config
@@ -119,14 +120,42 @@ chown root.root /system/lib/hw/power.default.so
 chmod 0664 /system/lib/hw/power.default.so
 fi
 
-if [ "$wifi_pm" == "on" ];then
+wifi_pm= /cat /data/wifi_pm
 mount -o remount,rw /
+if [ "$wifi_pm" = "on" ]; then 
 echo "1" > /sys/module/dhd/parameters/wifi_pm
 else
-mount -o remount,rw /
 echo "0" > /sys/module/dhd/parameters/wifi_pm
 fi
 
+#write memory configuration into user profile
+#check if its the first installation with this option
+if [ ! -f /data/check ]; then
+echo memory=balanced >> /data/.siyah/default.profile
+echo memory=balanced >> /data/backup.profile
+fi
+
+MEMORY= cat /data/memory
+if [ "$MEMORY" = "balanced" ]; then 
+echo "0,1,3,5,7,15" > /sys/module/lowmemorykiller/parameters/adj;
+echo "2560,4096,6144,12288,14336,18432" > /sys/module/lowmemorykiller/parameters/minfree;
+fi
+if [ "$MEMORY" = "gamers" ]; then 
+echo "0,1,3,5,7,15" > /sys/module/lowmemorykiller/parameters/adj;
+echo "1280,2560,5120,7680,12800,20480" > /sys/module/lowmemorykiller/parameters/minfree;
+fi
+if [ "$MEMORY" = "multitasking" ]; then 
+echo "0,1,3,5,7,15" > /sys/module/lowmemorykiller/parameters/adj;
+echo "1280,2560,5632,7680,11776,14848" > /sys/module/lowmemorykiller/parameters/minfree;
+fi
+if [ "$MEMORY" = "nexus" ]; then 
+echo "0,1,2,4,7,15" > /sys/module/lowmemorykiller/parameters/adj;
+echo "2560,4096,6144,12288,14336,18432" > /sys/module/lowmemorykiller/parameters/minfree;
+fi
+if [ "$MEMORY" = "hardtask" ]; then 
+echo "0,1,2,4,7,15" > /sys/module/lowmemorykiller/parameters/adj;
+echo "1408,2816,3755,7040,9387,12288" > /sys/module/lowmemorykiller/parameters/minfree;
+fi
 
 ##### init scripts #####
 /sbin/busybox sh /sbin/ext/run-init-scripts.sh

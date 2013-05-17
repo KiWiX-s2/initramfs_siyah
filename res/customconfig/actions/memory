@@ -1,0 +1,46 @@
+#!/sbin/busybox sh
+
+if [ "a$2" != "a" ];then
+memory=$2
+fi
+
+mount -o remount,rw /
+
+cp /res/memory /data/memory
+cp /res/check /data/check
+chown root.system /data/memory
+chmod 0664  /data/memory
+chown root.system /data/check
+chmod 0664  /data/check
+
+case "${memory}" in
+balanced)
+echo "balanced" > /data/memory
+echo "0,1,3,5,7,15" > /sys/module/lowmemorykiller/parameters/adj;
+echo "2560,4096,6144,12288,14336,18432" > /sys/module/lowmemorykiller/parameters/minfree;
+;;
+gamers)
+echo "gamers" > /data/memory
+echo "0,1,3,5,7,15" > /sys/module/lowmemorykiller/parameters/adj;
+echo "1280,2560,5120,7680,12800,20480" > /sys/module/lowmemorykiller/parameters/minfree;
+;;
+multitasking)
+echo "multitasking" > /data/memory
+echo "0,1,3,5,7,15" > /sys/module/lowmemorykiller/parameters/adj;
+echo "1280,2560,5632,7680,11776,14848" > /sys/module/lowmemorykiller/parameters/minfree;
+;;
+nexus)
+echo "nexus" > /data/memory
+echo "0,1,2,4,7,15" > /sys/module/lowmemorykiller/parameters/adj;
+echo "2560,4096,6144,12288,14336,18432" > /sys/module/lowmemorykiller/parameters/minfree;
+;;
+hardtask)
+echo "hardtask" > /data/memory
+echo "0,1,2,4,7,15" > /sys/module/lowmemorykiller/parameters/adj;
+echo "1408,2816,3755,7040,9387,12288" > /sys/module/lowmemorykiller/parameters/minfree;
+;;
+esac;
+
+mount -o remount,ro /
+
+echo $memory
