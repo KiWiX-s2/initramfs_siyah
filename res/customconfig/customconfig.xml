@@ -138,18 +138,14 @@ the boostpulse interface will increase the cpu's frequency to 800mhz for 500ms w
 	<spinnerItem name="Nunogil VM Tweaks" value="nunogil"/>
 	<spinnerItem name="Default VM Tweaks" value="default"/>
       </spinner>
-<seekBar description="Dirty real time memory buffer, more you set, more memory will be used for write buffer for real time operations. Buffer is released on need to free RAM (Default: 10%)"
-name="Dirty ratio" action="generic /proc/sys/vm/dirty_ratio" unit="%" min="5" reversed="false" step="5" max="90"/>
-<seekBar description="Dirty Background ratio, more you set, more memory will be used for write buffer for real time operations. Buffer is released on need to free RAM (Default: 15%)"
-name="Dirty Background ratio" action="generic /proc/sys/vm/dirty_background_ratio" unit="%" min="5" reversed="false" step="5" max="80"/>
-<seekBar description="Vibration intensity level (default 75%)" 
-name="Vibration Level" action="generic /sys/vibrator/pwm_val" unit="%" min="25" reversed="false" step="25" max="100"/>
 <spinner description="Set values for memory management" name="Memory" action="memory">
 <spinnerItem name="Gamers (free memory)" value="gamers"/>
 <spinnerItem name="Balanced" value="balanced"/>
 <spinnerItem name="Nexus" value="nexus"/>
 <spinnerItem name="Multitasking" value="multitasking"/>
 <spinnerItem name="Hard Multitasking" value="hardtask"/>
+<seekBar description="Vibration intensity level (default 75%)" 
+name="Vibration Level" action="generic /sys/vibrator/pwm_val" unit="%" min="25" reversed="false" step="25" max="100"/>
 </spinner>
 </settingsPane>
 </settingsPane>

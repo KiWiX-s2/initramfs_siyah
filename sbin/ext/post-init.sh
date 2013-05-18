@@ -120,22 +120,19 @@ chown root.root /system/lib/hw/power.default.so
 chmod 0664 /system/lib/hw/power.default.so
 fi
 
-wifi_pm= /cat /data/wifi_pm
-mount -o remount,rw /
-wifi_pm= cat /data/wifi_pm
-if [ "$wifi_pm" = "1" ]; then 
-echo "1" > /sys/module/dhd/parameters/wifi_pm
-else
-echo "0" > /sys/module/dhd/parameters/wifi_pm
-fi
-
 #write memory configuration into user profile
-#check if its the first installation with this option
-if [ ! -f /data/check ]; then
-echo memory=balanced >> /data/.siyah/default.profile
-echo memory=balanced >> /data/backup.profile
+#check if it's the first installation with this option
+su
+if ls /data/check &> /dev/null; then
+echo "installed" > /data/check
+else
+echo "memory=balanced" >> /data/.siyah/default.profile
+if ls /data/backup.profile &> /dev/null; then
+echo "memory=balanced" >> /data/backup.profile
+fi
 fi
 
+su
 MEMORY= cat /data/memory
 if [ "$MEMORY" = "balanced" ]; then 
 echo "0,1,3,5,7,15" > /sys/module/lowmemorykiller/parameters/adj;

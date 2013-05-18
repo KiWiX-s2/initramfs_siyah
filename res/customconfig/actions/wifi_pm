@@ -1,25 +1,20 @@
 #!/sbin/busybox sh
 
-if [ "$2" ]; then
-    wifi_pm=$2
-
-mount -o remount,rw /
-
-cp /res/wifi_pm /data/wifi_pm
-chown root.system /data/wifi_pm
-chmod 0664 /data/wifi_pm
-
-    case "${wifi_pm}" in
-	on)
-            echo "on" > /data/wifi_pm
-	    echo "1" > /sys/module/dhd/parameters/wifi_pm
-	    ;;
-	off)
-	    echo "off" > /data/wifi_pm
-	    echo "0" > /sys/module/dhd/parameters/wifi_pm
-	    ;;
-    esac
-
+if [ "a$2" != "a" ];then
+  wifi_pm=$2
 fi
 
-echo ${wifi_pm}
+mount o remount,rw /
+
+case "${wifi_pm}" in
+  off)
+    echo "0" > /sys/module/dhd/parameters/wifi_pm
+    ;;
+  on)
+    echo "1" > /sys/module/dhd/parameters/wifi_pm
+    ;;
+esac;
+
+mount o remount,ro /
+
+echo $wifi_pm
